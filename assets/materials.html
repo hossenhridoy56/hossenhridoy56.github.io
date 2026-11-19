@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materials & Software | Md. Hridoy Hossen</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-identity">
+      <img src="assets/profile.jpg" alt="Md. Hridoy Hossen" class="profile-img">
+      <h1 class="author-name">Md. Hridoy Hossen</h1>
+      <p class="author-title">Statistician & Academic Researcher</p>
+      <p class="author-affil">Department of Statistics & Data Science<br><strong>Islamic University, Bangladesh</strong></p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="research.html" class="nav-link">Research</a>
+      <a href="publications.html" class="nav-link">Publications</a>
+      <a href="materials.html" class="nav-link active">Materials & Code</a>
+      <a href="assets/CV.pdf" target="_blank" class="nav-link cv-link">Curriculum Vitae (PDF) ↗</a>
+    </nav>
+
+    <div class="sidebar-links">
+      <a href="mailto:hridoy1922025.stat@std.iu.ac.bd">Email</a>
+      <a href="https://github.com/hossenhridoy56" target="_blank">GitHub</a>
+      <a href="https://doi.org/10.5281/zenodo.23324622" target="_blank">Zenodo</a>
+      <a href="https://stratosphere-gateway.onrender.com/" target="_blank">Live Gateway</a>
+    </div>
+
+    <div class="sidebar-footer">
+      <p>© 2026 Md. Hridoy Hossen</p>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    
+    <header class="page-header">
+      <p class="eyebrow">Open Science & Code</p>
+      <h1 class="headline">Software Packages, Computational Pipelines & Data</h1>
+    </header>
+
+    <section class="intro-section">
+      <p class="lead-text">
+        In accordance with the principles of reproducible research and open science, all code, simulation pipelines, 
+        and cleaned data tables generated as part of my scientific projects are archived with permanent DOIs and maintained 
+        in open repositories.
+      </p>
+    </section>
+
+    <!-- Code Repositories -->
+    <section class="content-block">
+      <h2>Open-Source Scientific Packages</h2>
+
+      <div class="cards-grid">
+        
+        <div class="card">
+          <div class="card-tag">Time Series Testing</div>
+          <h3>massive-variance-stability-test</h3>
+          <p>Full implementation of the Massive Variance Stability Test (MVT) in Python and R. Includes Monte Carlo engines (10,000 replications) and Gold Futures empirical pipeline.</p>
+          <div class="badge-row">
+            <span class="badge badge-green">MIT License</span>
+            <span class="badge badge-blue">Zenodo v1.0.0</span>
+          </div>
+          <a href="https://github.com/hossenhridoy56/massive-variance-stability-test" target="_blank" class="card-link">GitHub Repository →</a>
+        </div>
+
+        <div class="card">
+          <div class="card-tag">Climate Machine Learning</div>
+          <h3>Bangladesh-Seasonal-Reclassification</h3>
+          <p>End-to-end analysis pipeline clustering 30 years of BMD station records using PCA, K-Means, DBSCAN, and Dynamic Time Warping (DTW) to discover non-stationary seasonal regimes.</p>
+          <div class="badge-row">
+            <span class="badge badge-orange">UGC Project</span>
+            <span class="badge badge-blue">Zenodo DOI</span>
+          </div>
+          <a href="https://github.com/hossenhridoy56/Bangladesh-Seasonal-Reclassification" target="_blank" class="card-link">GitHub Repository →</a>
+        </div>
+
+        <div class="card">
+          <div class="card-tag">Web & Automation</div>
+          <h3>stratosphere-gateway</h3>
+          <p>Full-stack departmental web management infrastructure with Generative AI-assisted academic document automation (Flask, PostgreSQL, Locust concurrency tested at 24.4 RPS).</p>
+          <div class="badge-row">
+            <span class="badge badge-purple">Production Live</span>
+          </div>
+          <a href="https://stratosphere-gateway.onrender.com/" target="_blank" class="card-link">Visit Live Gateway ↗</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Computing & Tooling Stack -->
+    <section class="content-block">
+      <h2>Scientific Computing & Environment</h2>
+      <ul class="timeline-list">
+        <li>
+          <div class="timeline-content">
+            <h4>Statistical Computing</h4>
+            <p><strong>Python:</strong> NumPy, SciPy, Pandas, statsmodels, scikit-learn, Xarray (ERA5 NetCDF handling).<br>
+            <strong>R:</strong> tidyverse, ggplot2, fda, funData, forecast.</p>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-content">
+            <h4>Typesetting & Publishing</h4>
+            <p>LaTeX, Overleaf, BibTeX, R Markdown, Git & GitHub Actions.</p>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-content">
+            <h4>Backend & Computational Infrastructure</h4>
+            <p>Python (Flask), PostgreSQL, SQLAlchemy, Linux / Bash, Locust load testing.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+</body>
+</html>
