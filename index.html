@@ -83,6 +83,41 @@
       </ul>
     </section>
 
+    <!-- Technical & Methodological Competencies -->
+    <section class="content-block">
+      <h2>Technical & Methodological Competencies</h2>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 0.925rem;">
+        <thead>
+          <tr style="border-bottom: 2px solid #e5e7eb; text-align: left;">
+            <th style="padding: 0.5rem 0.75rem; width: 28%;">Area</th>
+            <th style="padding: 0.5rem 0.75rem;">Tools &amp; Methodologies</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #f3f4f6;">
+            <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Statistical Computing</td>
+            <td style="padding: 0.5rem 0.75rem;">R, Python (NumPy, SciPy, Pandas, Statsmodels, Scikit-learn, Xarray), SPSS, STATA, SAS</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f3f4f6;">
+            <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Statistical Theories</td>
+            <td style="padding: 0.5rem 0.75rem;">Functional Data Analysis (FDA), Autoregressive Mixtures, Bayesian Inference, Asymptotics, Time Series</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f3f4f6;">
+            <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Machine Learning</td>
+            <td style="padding: 0.5rem 0.75rem;">Model-based Clustering, K-Means, DBSCAN, GMM, Hierarchical Clustering, PCA, Dynamic Time Warping (DTW)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f3f4f6;">
+            <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Scientific Communication</td>
+            <td style="padding: 0.5rem 0.75rem;">LaTeX, Overleaf, BibTeX, R Markdown, Git / GitHub</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Backend &amp; Databases</td>
+            <td style="padding: 0.5rem 0.75rem;">Python (Flask), PostgreSQL, SQLAlchemy, RESTful APIs, Locust Load Testing</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
     <!-- Current Projects -->
     <section class="content-block">
       <h2>Research Projects</h2>
@@ -114,12 +149,19 @@
           Md. Hridoy Hossen (Supervised by Assoc. Prof. Md. Matiur Rahman Molla)
         </div>
         <div class="pub-venue">
-          M.Sc. Thesis Research Monograph (In Progress, 2026).
+          M.Sc. Thesis Project, Department of Statistics &amp; Data Science, Islamic University, Kushtia (In Progress, Expected April 2027).
         </div>
         <div class="pub-desc">
-          We propose the AR-FMC framework to cluster repeated annual curves without discarding temporal autocorrelation or forcing static pre-averaging. Curves are projected onto a common Karhunen–Loève basis, and the latent scores are modeled as a stationary AR(1) mixture using a Prais–Winsten likelihood. We evaluated the method on Monte Carlo simulations and applied it to 76 years of ERA5-Land daily precipitation across Bangladesh (1,214 grid cells, 92,264 individual annual curves without temporal pooling).
+          <ul style="list-style-type: disc; margin-left: 1.25rem; margin-top: 0.35rem; line-height: 1.65; color: #4b5563;">
+            <li><strong>Core Innovation:</strong> Formulating a likelihood-based finite mixture framework for repeated annual functional trajectories with an explicit Gaussian AR(1) dependence structure across observation years, relaxing classical independence assumptions without forcing static pre-averaging.</li>
+            <li><strong>Mathematical Derivations:</strong> Evaluated on pooled Functional Principal Component Analysis (FPCA) score vectors $\boldsymbol{\xi}_{i,t} \in \mathbb{R}^d$. Incorporated a Prais–Winsten transformation with exact lower-triangular Jacobian $(1-\phi^2)^{d/2}$ preserving observed-data likelihood:
+              $$\mathcal{L}(\boldsymbol{\Theta}) = \prod_{i=1}^N \left[ (1 - \phi^2)^{d/2} \sum_{g=1}^G \pi_g \prod_{t=1}^T f_d\left(\tilde{\boldsymbol{\xi}}_{i,t};\, a_t(\phi)\boldsymbol{\mu}_g,\, \boldsymbol{\Sigma}_g\right) \right]$$
+            </li>
+            <li><strong>Computational Estimation:</strong> Generalized EM algorithm with numerically optimized autoregressive parameter $\phi$, GLS mean updates, BIC/ICL cluster selection, and effective sample size scaling $T_{\text{eff}} = T\frac{1-\phi}{1+\phi}$.</li>
+            <li><strong>Application Dataset:</strong> High-resolution ERA5-Land daily precipitation reanalysis for Bangladesh (1950–2025; 76-year continuous panel across 1,214 grid cells, clustering 92,264 individual annual curves).</li>
+          </ul>
         </div>
-        <div class="pub-links">
+        <div class="pub-links" style="margin-top: 0.75rem;">
           <a href="assets/AR_FMC_Research_Summary.pdf" target="_blank" class="pub-link">1-Page Summary (PDF) ↗</a>
           <a href="research.html#functional-data" class="pub-link">Method Details →</a>
         </div>
