@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Research | Md. Hridoy Hossen</title>
+  <meta name="description" content="Research methodology, formulations, and projects of Md. Hridoy Hossen.">
   <link rel="stylesheet" href="assets/style.css">
   <!-- KaTeX for Math -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -17,23 +18,27 @@
     <div class="sidebar-identity">
       <img src="assets/profile.jpg" alt="Md. Hridoy Hossen" class="profile-img">
       <h1 class="author-name">Md. Hridoy Hossen</h1>
-      <p class="author-title">Statistician & Academic Researcher</p>
-      <p class="author-affil">Department of Statistics & Data Science<br><strong>Islamic University, Bangladesh</strong></p>
+      <p class="author-title">Graduate Researcher in Statistics</p>
+      <p class="author-affil">
+        Department of Statistics & Data Science<br>
+        Islamic University, Bangladesh<br>
+        Kushtia 7003
+      </p>
     </div>
 
     <nav class="sidebar-nav">
-      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html" class="nav-link">About</a>
       <a href="research.html" class="nav-link active">Research</a>
       <a href="publications.html" class="nav-link">Publications</a>
-      <a href="materials.html" class="nav-link">Materials & Code</a>
-      <a href="assets/CV.pdf" target="_blank" class="nav-link cv-link">Curriculum Vitae (PDF) ↗</a>
+      <a href="materials.html" class="nav-link">Software & Data</a>
+      <a href="assets/CV.pdf" target="_blank" class="nav-link cv-link">CV (PDF) ↗</a>
     </nav>
 
     <div class="sidebar-links">
       <a href="mailto:hridoy1922025.stat@std.iu.ac.bd">Email</a>
+      <a href="https://orcid.org/0009-0002-5573-4688" target="_blank">ORCID</a>
       <a href="https://github.com/hossenhridoy56" target="_blank">GitHub</a>
       <a href="https://doi.org/10.5281/zenodo.23324622" target="_blank">Zenodo</a>
-      <a href="https://stratosphere-gateway.onrender.com/" target="_blank">Live Gateway</a>
     </div>
 
     <div class="sidebar-footer">
@@ -45,106 +50,97 @@
   <main class="main-content">
     
     <header class="page-header">
-      <p class="eyebrow">Research Statement & Agenda</p>
-      <h1 class="headline">Functional Trajectories, Variance Stationarity & Climate Dynamics</h1>
+      <h1 class="headline">Research Overview</h1>
+      <p style="color: #4b5563; font-size: 1rem; margin-top: 0.25rem;">
+        Statistical methodology, likelihood formulations, and climatological applications
+      </p>
     </header>
 
     <section class="intro-section">
       <p class="lead-text">
-        Modern scientific phenomena frequently produce data that are naturally represented as continuous curves, temporal processes, 
-        or high-dimensional spatial surfaces. In these settings, standard statistical assumptions of independent and identically distributed (i.i.d.) 
-        replications routinely fail.
+        Many environmental and economic systems produce data naturally represented as continuous curves, temporal sequences, 
+        or spatial fields. In these settings, standard assumptions of independent and identically distributed (i.i.d.) observations 
+        rarely hold.
       </p>
       <p class="lead-text">
-        My research program develops <strong>principled statistical methods</strong> designed to respect underlying temporal dependencies, 
-        asymptotic distributional behavior, and spatial heterogeneity. My work spans theoretical derivations, high-throughput Monte Carlo 
-        simulations, and applications in multi-decadal climatology and econometrics.
+        My research focuses on developing likelihood-based statistical methods that respect temporal serial dependence, 
+        structural breaks, and spatial heterogeneity. My work combines theoretical derivations, Monte Carlo simulations, 
+        and applied studies in multi-decadal climatology.
       </p>
     </section>
 
-    <!-- Research Theme 1 -->
+    <!-- Theme 1 -->
     <section class="content-block" id="functional-data">
       <h2>1. Functional Data Analysis with Temporal Dependence</h2>
       <p class="lead-text">
-        In climatological studies, an annual rainfall trajectory is represented as a functional curve $Y_{i,t}(s)$ over a season $s$. 
-        Standard functional clustering algorithms treat curve observations across repeated years as mutually independent given cluster membership. 
-        However, annual curves exhibit substantial multi-year persistence. Ignoring this serial correlation causes model selection criteria 
-        (such as BIC) to over-estimate the number of true underlying clusters.
+        In climatological monitoring, continuous annual records (such as seasonal precipitation accumulation) are represented 
+        as functional trajectories over time. Standard functional clustering algorithms treat curve observations across repeated 
+        years as mutually independent realizations. However, multi-year climate panels exhibit serial autocorrelation driven 
+        by atmospheric memory and low-frequency climate modes.
+      </p>
+      <p class="lead-text">
+        A common workaround is to average multiple years of curves into a single profile. While this avoids modeling the serial dependence, 
+        it removes year-to-year variation, extreme events, and shifts in seasonal transitions.
       </p>
 
       <div class="math-box">
-        <strong>Model Formulation:</strong>
-        <p>Pooled Functional Principal Component Analysis (FPCA) maps curves into $d$-dimensional score vectors $\boldsymbol{\xi}_{i,t} \in \mathbb{R}^d$. Given cluster label $z_i = g$, the scores evolve according to a stationary vector AR(1) process:</p>
-        $$\boldsymbol{\xi}_{i,t} = \boldsymbol{\mu}_g + \boldsymbol{u}_{i,t}, \quad \boldsymbol{u}_{i,t} = \phi \boldsymbol{u}_{i,t-1} + \boldsymbol{\epsilon}_{i,t}, \quad |\phi| < 1, \quad \boldsymbol{\epsilon}_{i,t} \sim \mathcal{N}_d(\mathbf{0}, \boldsymbol{\Sigma}_g)$$
+        <p style="font-weight: 600; margin-bottom: 0.4rem;">AR-FMC Formulation:</p>
+        <p>1. Dimensionality reduction: Each curve is projected onto orthogonal eigenfunctions obtained via Functional Principal Component Analysis (FPCA):</p>
+        $$X_i(t) = \mu(t) + \sum_{k=1}^K \xi_{ik}\phi_k(t) + \epsilon_i(t), \quad \boldsymbol{\xi}_i = (\xi_{i1}, \dots, \xi_{iK})^\top \in \mathbb{R}^K$$
         
-        <p>Applying a Prais–Winsten transformation yields independent innovations while preserving the lower-triangular Jacobian $(1-\phi^2)^{d/2}$ directly inside the observed-data likelihood:</p>
-        $$\mathcal{L}(\boldsymbol{\Theta}) = \prod_{i=1}^N \left[ (1 - \phi^2)^{d/2} \sum_{g=1}^G \pi_g \prod_{t=1}^T f_d\left(\tilde{\boldsymbol{\xi}}_{i,t};\, a_t(\phi)\boldsymbol{\mu}_g,\, \boldsymbol{\Sigma}_g\right) \right]$$
+        <p>2. Latent AR(1) dynamics with Prais–Winsten likelihood: Conditional on cluster membership $k$, the score vector follows a stationary first-order autoregressive process:</p>
+        $$\boldsymbol{\xi}_{i} - \boldsymbol{\mu}_k = \phi (\boldsymbol{\xi}_{i-1} - \boldsymbol{\mu}_k) + \boldsymbol{\eta}_{ik}, \quad \boldsymbol{\eta}_{ik} \sim \mathcal{N}_K(\mathbf{0}, \boldsymbol{\Sigma}_k)$$
+        <p>To retain the initial observation under stationarity, we implement a full Prais–Winsten transformation, ensuring $\mathrm{Var}(\boldsymbol{\xi}_{1} \mid z_{i1}=1) = \boldsymbol{\Sigma}_k / (1 - \phi^2)$.</p>
+
+        <p>3. EM estimation: Parameter estimation uses an Expectation–Maximization algorithm, where cluster centers $\boldsymbol{\mu}_k$ are updated via Generalized Least Squares (GLS) to account for temporal covariance.</p>
       </div>
 
       <p class="lead-text">
-        <strong>Key Project:</strong><br>
-        <em>Autoregressive Model-Based Functional Data Clustering: Resolving Temporal Dependence in Multi-Year Climatological Profiles</em> (M.Sc. Thesis Project, Islamic University, Kushtia; Evaluated on 76 years of ERA5-Land daily precipitation).
+        Application to Bangladesh (1950–2025): Deployed on ECMWF ERA5-Land daily precipitation covering 1,214 grid cells across Bangladesh over 76 years. 
+        Each grid-cell year was converted into a 122-day cumulative monsoon profile (1 June to 30 September), yielding 92,264 individual annual curves 
+        clustered without pre-averaging. The five-cluster solution identified distinct regimes, such as early heavy accumulation in the northeastern haor basin 
+        versus delayed, drier profiles in the northwestern Barind tract.
+      </p>
+      <p style="margin-top: 0.5rem;">
+        <a href="assets/AR_FMC_Research_Summary.pdf" target="_blank" class="pub-link">Download 1-Page Academic Summary (PDF) ↗</a>
       </p>
     </section>
 
-    <!-- Research Theme 2 -->
+    <!-- Theme 2 -->
     <section class="content-block" id="variance-stability">
-      <h2>2. Time Series Econometrics & Asymptotic Distribution Theory</h2>
+      <h2>2. Time Series Econometrics & Variance Stationarity (MVT)</h2>
       <p class="lead-text">
-        Checking whether variance remains stable across time is essential in financial econometrics and macroeconomic forecasting. 
-        Traditional homoskedasticity tests often require prior knowledge of structural break dates or struggle under heavy-tailed non-Gaussian innovations.
+        Testing whether volatility remains stationary across long horizons is essential in financial econometrics and macroeconomic forecasting. 
+        Traditional homoskedasticity tests frequently require pre-specifying break dates or suffer size distortions under non-Gaussian, fat-tailed innovations.
       </p>
 
       <div class="math-box">
-        <strong>Massive Variance Stability Test (MVT):</strong>
-        <p>A time series of length $n$ is partitioned into $k$ non-overlapping segments of size $m = n/k$. The MVT statistic measures dispersion among segment-wise variances:</p>
-        $$Q_{\mathrm{MVT}} = \frac{m-1}{2\bar{v}^2} \sum_{j=1}^k (v_j - \bar{v})^2 \overset{d}{\longrightarrow} \chi^2_{k-1}$$
-        <p>Analytical noncentrality parameters were derived for single and multiple structural variance shifts occurring at segment boundaries.</p>
+        <p style="font-weight: 600; margin-bottom: 0.4rem;">Massive Variance Stability Test (MVT):</p>
+        <p>Partitioning a series of length $n$ into $k$ non-overlapping segments of size $m = n/k$, the MVT statistic tests segment sample variances $s_j^2$ against a global variance $s_0^2$:</p>
+        $$Q_{\mathrm{MVT}} = \frac{m}{2} \sum_{j=1}^k \left( \frac{s_j^2 - s_0^2}{s_0^2} \right)^2 \overset{d}{\longrightarrow} \chi^2_{k-1} \quad \text{as } m \to \infty$$
+        <p>Monte Carlo experiments (10,000 replications) evaluate empirical size and power relative to the Breusch–Pagan and Goldfeld–Quandt tests under structural variance shifts and fat-tailed innovations.</p>
       </div>
-
-      <div class="badge-row">
-        <a href="https://doi.org/10.5281/zenodo.22861296" target="_blank" class="badge badge-blue">Zenodo DOI: 10.5281/zenodo.22861296</a>
-        <a href="https://github.com/hossenhridoy56/massive-variance-stability-test" target="_blank" class="badge badge-purple">GitHub Code & Data</a>
-      </div>
-
-      <p class="lead-text">
-        <strong>Key Project:</strong><br>
-        <em>A Novel Massive Variance Stability Test: Theory, Distributional Derivations, and Superior Performance Under Structural Breaks</em>. Validated across 10,000 Monte Carlo replications and 4,997 daily Gold Futures price observations ($p \approx 7.67 \times 10^{-258}$).
+      <p>
+        <a href="https://doi.org/10.5281/zenodo.22861296" target="_blank" class="pub-link">Zenodo Archive: 10.5281/zenodo.22861296</a> | 
+        <a href="https://github.com/hossenhridoy56/massive-variance-stability-test" target="_blank" class="pub-link">Code Repository</a>
       </p>
     </section>
 
-    <!-- Research Theme 3 -->
+    <!-- Theme 3 -->
     <section class="content-block" id="climate-clustering">
-      <h2>3. Climatological Reclassification & Machine Learning (UGC Funded)</h2>
+      <h2>3. Climatological Reclassification & Cluster Analysis (UGC Project)</h2>
       <p class="lead-text">
-        Climate change is altering traditional seasonal timing across South Asia. We conducted a comprehensive empirical evaluation 
-        challenging the centuries-old traditional six-season calendar paradigm of Bangladesh.
-      </p>
-
-      <div class="badge-row">
-        <span class="badge badge-orange">UGC Funded (FY 2025–2026)</span>
-        <span class="badge badge-green">Under Peer Review</span>
-        <a href="https://doi.org/10.5281/zenodo.23324622" target="_blank" class="badge badge-blue">Zenodo DOI: 10.5281/zenodo.23324622</a>
-      </div>
-
-      <p class="lead-text">
-        <strong>Key Project:</strong><br>
-        Molla, M. M. R., <strong>Hossen, M. H.</strong>, & Siddika, A. (2026). <em>A Cluster Analysis of Bangladesh's Monthly Climate and Its Comparison with the Traditional Six-Season Calendar</em>. Submitted to <strong>Theoretical and Applied Climatology</strong>.<br>
-        • Analyzed 30 years (1985–2014; 10,865 station-months) across 33 BMD stations over 6 meteorological variables.<br>
-        • Demonstrated strong empirical support for a 4-season structure (Winter, Pre-Monsoon, Monsoon, Post-Monsoon) with October as an independent transition month.
-      </p>
-    </section>
-
-    <!-- Research Theme 4 -->
-    <section class="content-block" id="vulnerability">
-      <h2>4. Spatial Environmental Statistics & Public Health Modeling</h2>
-      <p class="lead-text">
-        Understanding spatial vulnerability requires synthesizing high-resolution climate reanalysis with granular demographic and epidemiological surveys.
+        As a Research Assistant on a project funded by the University Grants Commission (UGC) of Bangladesh, I examined whether the traditional six-season calendar 
+        corresponds to measured climate using 30 years of daily and monthly records (1985–2014) from 33 BMD weather stations.
       </p>
       <p class="lead-text">
-        <strong>Key Project:</strong><br>
-        <em>Climate-Health Vulnerability Assessment in Bangladesh: A Data-Driven Statistical Framework</em>.<br>
-        Applied Principal Component Analysis (PCA) to seven multi-decadal ERA5-Land climate indicators across all 64 districts (capturing 89.73% of total variance), linking with MICS 2025 health and disaster indicators to formulate standardized composite indices for Climate Exposure, Health Sensitivity, and Adaptive Capacity.
+        Using an exhaustive contiguous search among circular calendar partitions across six climate variables (10,865 station-months), we identified a four-season partition 
+        (Winter, Pre-Monsoon, Monsoon, Post-Monsoon) as the preferred description of the monthly climatology. The traditional seasons group into these blocks in pairs, 
+        and resampling 33 stations and 30 years showed high partition stability (mean ARI of 0.931 and 0.884).
+      </p>
+      <p>
+        <a href="https://doi.org/10.5281/zenodo.23324622" target="_blank" class="pub-link">Zenodo Dataset & Code: 10.5281/zenodo.23324622</a> | 
+        <a href="https://github.com/hossenhridoy56/Bangladesh-Seasonal-Reclassification" target="_blank" class="pub-link">GitHub Pipeline</a>
       </p>
     </section>
 
